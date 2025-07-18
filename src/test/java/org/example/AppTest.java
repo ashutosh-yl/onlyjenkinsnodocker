@@ -1,7 +1,8 @@
 package org.example;
 
+@Test
 public class AppTest {
-    public static void main(String[] args) {
+    public static void print() {
         System.out.println("jenkins chal gaya");
     }
 }
