@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/your-username/your-repo.git' // Replace with your public repo
+                git 'https://github.com/ashutosh-yl/onlyjenkinsnodocker.git' // Replace with your public repo
             }
         }
 
