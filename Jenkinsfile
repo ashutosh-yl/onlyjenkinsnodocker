@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/ashutosh-yl/onlyjenkinsnodocker.git' // Replace with your public repo
-            }
+                 git branch: 'main', url: 'https://github.com/ashutosh-yl/onlyjenkinsnodocker.git'
+                            }
         }
 
         stage('Build') {
