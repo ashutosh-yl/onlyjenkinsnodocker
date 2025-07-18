@@ -19,8 +19,8 @@ pipeline {
         stage('Run Tests in Docker') {
             steps {
                 script {
-                    docker.image('testng-java-image').inside("-v ${env.WORKSPACE}/.m2:/root/.m2") {
-                    sh 'mvn test'
+                    docker.image('testng-java-image').inside {
+                                    sh 'mvn test -Dmaven.repo.local=.m2/repository'
                 }
             }
         }
