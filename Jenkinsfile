@@ -11,7 +11,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build('testng-java-image')
+                    dockerImage = docker.build('testng-java-image')
                 }
             }
         }
@@ -19,7 +19,7 @@ pipeline {
         stage('Run Tests in Docker') {
             steps {
                 script {
-                    docker.image('testng-java-image').inside {
+                    dockerImage.inside {
                         sh 'mvn test'
                     }
                 }
