@@ -4,19 +4,25 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                 git branch: 'main', url: 'https://github.com/ashutosh-yl/onlyjenkinsnodocker.git'
-                            }
-        }
-
-        stage('Build') {
-            steps {
-                sh 'mvn clean install'
+                git branch: 'main', url: 'https://github.com/ashutosh-yl/onlyjenkinsnodocker.git'
             }
         }
 
-        stage('Test') {
+        stage('Build Docker Image') {
             steps {
-                sh 'mvn test'
+                script {
+                    docker.build('testng-java-image')
+                }
+            }
+        }
+
+        stage('Run Tests in Docker') {
+            steps {
+                script {
+                    docker.image('testng-java-image').inside {
+                        sh 'mvn test'
+                    }
+                }
             }
         }
     }
